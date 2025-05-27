@@ -62,12 +62,13 @@ const MetricsDisplay: React.FC<MetricsDisplayProps> = ({ audits }) => {
       <hr className="mb-4"/>
       <div className="grid grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-2">
         {metricsToShow.map((metric: any) => (
-          <MetricItem
-            key={metric.id}
-            title={metric.title}
-            displayValue={metric.displayValue}
-            score={metric.score} // Pass the audit score for color coding
-          />
+         <MetricItem
+  key={metric.id}
+  title={metric.title}
+  value={metric.value}               // <-- add this line
+  displayValue={metric.displayValue}
+  score={metric.score}
+/>
         ))}
         {/* {interactiveTime && (
            <MetricItem title="Time to Interactive" displayValue={`${(interactiveTime / 1000).toFixed(1)} s`} />
