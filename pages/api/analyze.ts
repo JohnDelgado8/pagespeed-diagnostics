@@ -85,7 +85,7 @@ export default async function handler(
 
     let currentThrottlingSettings;
     let currentScreenEmulation;
-    let currentCategories = ['performance', 'accessibility', 'best-practices', 'seo', 'pwa'];
+    const currentCategories = ['performance', 'accessibility', 'best-practices', 'seo', 'pwa'];
 
     if (strategy === 'mobile') {
       currentThrottlingSettings = { 

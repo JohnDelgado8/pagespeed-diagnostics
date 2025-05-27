@@ -72,7 +72,7 @@ export default async function handler(
 
     const malwareAndSecurityItems: SecurityCheckItem[] = [];
     const blacklistItems: SecurityCheckItem[] = [];
-    let siteInformation: SiteInfo = {};
+    const siteInformation: SiteInfo = {};
     
     // Initialize risk and overall status
     let calculatedRiskLevel: ApiSecurityScanResponse['securityRisk'] = 'Minimal';
@@ -84,16 +84,16 @@ export default async function handler(
 
 
     // 1. HTTPS Check
-    try {
-      const parsedUrl = new URL(targetUrl);
-      if (parsedUrl.protocol === 'https:') {
-        malwareAndSecurityItems.push(createCheckItem('HTTPS Usage', 'pass', 'Site is served over a secure HTTPS connection.'));
-      } else {
-        malwareAndSecurityItems.push(createCheckItem('HTTPS Usage', 'fail', 'Site is not using HTTPS! This is a critical security vulnerability.'));
-      }
-    } catch (e) {
-      malwareAndSecurityItems.push(createCheckItem('URL Parsing', 'fail', 'The provided URL could not be parsed correctly.'));
-    }
+   try {
+  const parsedUrl = new URL(targetUrl);
+  if (parsedUrl.protocol === 'https:') {
+    malwareAndSecurityItems.push(createCheckItem('HTTPS Usage', 'pass', 'Site is served over a secure HTTPS connection.'));
+  } else {
+    malwareAndSecurityItems.push(createCheckItem('HTTPS Usage', 'fail', 'Site is not using HTTPS! This is a critical security vulnerability.'));
+  }
+} catch {
+  malwareAndSecurityItems.push(createCheckItem('URL Parsing', 'fail', 'The provided URL could not be parsed correctly.'));
+}
 
     // 2. Basic Header Analysis
     try {

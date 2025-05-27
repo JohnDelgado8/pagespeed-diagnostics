@@ -40,7 +40,7 @@ interface MetricsDisplayProps {
   timing?: any; // lhr.timing
 }
 
-const MetricsDisplay: React.FC<MetricsDisplayProps> = ({ audits, timing }) => {
+const MetricsDisplay: React.FC<MetricsDisplayProps> = ({ audits }) => {
   if (!audits) return null;
 
   // Key metrics to display (Lighthouse audit IDs)

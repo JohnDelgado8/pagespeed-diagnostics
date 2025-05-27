@@ -8,7 +8,7 @@ import {
   ArrowPathIcon,
   ComputerDesktopIcon,
   DevicePhoneMobileIcon,
-  SparklesIcon,     // Added for PWA display
+  // SparklesIcon,     // Added for PWA display
   UserCircleIcon,   // Added for logged-in average icon
   WindowIcon        // Added for session average icon
 } from '@heroicons/react/24/solid';

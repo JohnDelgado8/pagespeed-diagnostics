@@ -9,7 +9,7 @@ import {
     ShieldCheckIcon, 
     ExclamationTriangleIcon, 
     InformationCircleIcon,
-    CheckCircleIcon,
+    // CheckCircleIcon,
     XCircleIcon, // Make sure this is imported
     DocumentMagnifyingGlassIcon,
 } from '@heroicons/react/24/solid';
