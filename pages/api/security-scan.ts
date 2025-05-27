@@ -55,7 +55,10 @@ const createCheckItem = (
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<ApiSecurityScanResponse | { message: string, errorDetails?: string }>
+  res: NextApiResponse<ApiSecurityScanResponse | { message: string;
+        errorDetails?: string;
+        stack?: string;
+        errors?: z.ZodIssue[]; }>
 ) {
   if (req.method !== 'POST') {
     return res.status(405).json({ message: 'Method Not Allowed' });
@@ -177,7 +180,8 @@ export default async function handler(
     if (blacklistItems.some(item => item.status === 'blacklisted')) {
         currentBlacklistSummary = createCheckItem("Site Blacklisted", 'blacklisted', "Found on one or more blacklists.");
     } else {
-        currentBlacklistSummary = createCheckItem("Site Not Blacklisted", 'not_blacklisted', `${blacklistItems.length} common blacklists checked.`;
+        currentBlacklistSummary = createCheckItem("Site Not Blacklisted", 'not_blacklisted', `${blacklistItems.length} common blacklists checked.`);
+
     }
 
     currentOverallScanMessage = "This automated scan provides a snapshot of basic security indicators. For in-depth analysis and guaranteed protection, consult with cybersecurity professionals.";
