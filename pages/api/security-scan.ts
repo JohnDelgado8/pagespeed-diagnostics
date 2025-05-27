@@ -166,18 +166,18 @@ export default async function handler(
 
     // Update Malware Summary based on specific checks
     if (malwareAndSecurityItems.some(item => item.status === 'infected')) {
-        currentMalwareSummary = createCheckItem("Malware Detected!", 'infected', "Active malware signatures found.", true);
+        currentMalwareSummary = createCheckItem("Malware Detected!", 'infected', "Active malware signatures found.");
     } else if (malwareAndSecurityItems.some(item => item.status === 'fail' || item.status === 'warn')) {
         currentMalwareSummary = createCheckItem("Security Issues/Warnings", 'warning', "Review detailed security checks.", true);
     } else {
-        currentMalwareSummary = createCheckItem("No Malware Found", 'clean', "Scanner did not detect malware signatures.", true);
+        currentMalwareSummary = createCheckItem("No Malware Found", 'clean', "Scanner did not detect malware signatures.");
     }
 
     // Update Blacklist Summary based on specific checks
     if (blacklistItems.some(item => item.status === 'blacklisted')) {
-        currentBlacklistSummary = createCheckItem("Site Blacklisted", 'blacklisted', "Found on one or more blacklists.", true);
+        currentBlacklistSummary = createCheckItem("Site Blacklisted", 'blacklisted', "Found on one or more blacklists.");
     } else {
-        currentBlacklistSummary = createCheckItem("Site Not Blacklisted", 'not_blacklisted', `${blacklistItems.length} common blacklists checked.`, true);
+        currentBlacklistSummary = createCheckItem("Site Not Blacklisted", 'not_blacklisted', `${blacklistItems.length} common blacklists checked.`;
     }
 
     currentOverallScanMessage = "This automated scan provides a snapshot of basic security indicators. For in-depth analysis and guaranteed protection, consult with cybersecurity professionals.";

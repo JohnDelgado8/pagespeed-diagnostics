@@ -146,7 +146,7 @@ export default async function handler(
         categories: lhr.categories,
         audits: lhr.audits,
         timing: lhr.timing,
-        finalUrl: lhr.finalUrl,
+       finalUrl: lhr.finalUrl || '',
         lighthouseVersion: lhr.lighthouseVersion,
         fetchTime: lhr.fetchTime,
         // finalScreenshotData: lhr.audits['final-screenshot']?.details?.data, // If you choose to include it
@@ -184,7 +184,7 @@ export default async function handler(
     console.error(`[API /analyze] CRITICAL ERROR in handler for URL ${R_URL} (Strategy: ${R_STRATEGY}):`, error.message, error.stack);
     
     let errorMessage = `Failed to perform Lighthouse analysis for ${R_STRATEGY}.`;
-    if (error instanceof z.ZodError) {
+     if (error instanceof z.ZodError) {
       errorMessage = 'Validation failed: ' + error.errors.map(e => e.message).join(', ');
       return res.status(400).json({ message: errorMessage, errors: error.errors });
     }
